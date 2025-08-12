@@ -1,0 +1,123 @@
+# step1: filter data
+
+python code/0_filter_data.python
+
+
+# step2: include mutation and sequence information
+
+python code/1_infer_mutation.py
+
+
+# step3: calculate delta activity
+python code/2_delta_activity.py
+
+
+# step3: calculate stats
+
+# step4: logos in two modes: effect and information
+
+
+
+# step4: logos lolipop style
+
+python code/4_logos_lolipop.py \
+  --in-dir results/satmut_stats \
+  --pattern 'Jurkat_activity_satmut_effects_stats.tsv' \
+  --metric post_log2Skew \
+  --agg mean \
+  --y-symmetric \
+  --out-dir results/logos_lolipop \
+  --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \
+  --cell-type Jurkat \
+  --lollipop_alpha 0.18 \
+  --stem_width 0.6 \
+  --lollipop_jitter 0.0
+
+python code/4_logos_lolipop.py \
+  --in-dir results/satmut_stats \
+  --pattern 'JurkatStim_activity_satmut_effects_stats.tsv' \
+  --metric post_log2Skew \
+  --agg mean \
+  --y-symmetric \
+  --out-dir results/logos_lolipop \
+  --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \
+  --cell-type JurkatStim \
+  --lollipop_alpha 0.18 \
+  --stem_width 0.6 \
+  --lollipop_jitter 0.0
+
+python code/4_logos_lolipop.py \
+  --in-dir results/satmut_stats \
+  --pattern 'HEK293_activity_satmut_effects_stats.tsv' \
+  --metric post_log2Skew \
+  --agg mean \
+  --y-symmetric \
+  --out-dir results/logos_lolipop \
+  --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \
+  --cell-type HEK293 \
+  --lollipop_alpha 0.18 \
+  --stem_width 0.6 \
+  --lollipop_jitter 0.0
+
+
+# step 5: logos in other forms: effect and information modes
+
+  python code/5_logos_other.py \
+    --in-dir results/satmut_stats \
+    --pattern 'Jurkat_activity_satmut_effects_stats.tsv' \
+    --metric post_log2Skew \
+    --agg mean \
+    --fdr-col log2Skew_fdr --fdr-max 0.1 \
+    --out-dir results/logos_effect \
+    --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \
+    --cell-type Jurkat
+
+    python code/5_logos_other.py \
+    --in-dir results/satmut_stats \
+    --pattern 'JurkatStim_activity_satmut_effects_stats.tsv' \
+    --metric post_log2Skew \
+    --agg mean \
+    --fdr-col log2Skew_fdr --fdr-max 0.1 \
+    --out-dir results/logos_effect \
+    --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \
+    --cell-type JurkatStim
+
+    python code/5_logos_other.py \
+    --in-dir results/satmut_stats \
+    --pattern 'HEK293_activity_satmut_effects_stats.tsv' \
+    --metric post_log2Skew \
+    --agg mean \
+    --fdr-col log2Skew_fdr --fdr-max 0.1 \
+    --out-dir results/logos_effect \
+    --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \
+    --cell-type HEK293
+
+  python code/5_logos_other.py --mode ic \
+    --in-dir results/satmut_stats \
+    --pattern 'Jurkat_activity_satmut_effects_stats.tsv' \
+    --metric post_log2Skew \
+    --agg mean \
+    --temperature 1.0 \
+    --out-dir results/logos_ic \
+    --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \
+    --cell-type Jurkat
+
+  python code/5_logos_other.py --mode ic \
+    --in-dir results/satmut_stats \
+    --pattern 'JurkatStim_activity_satmut_effects_stats.tsv' \
+    --metric post_log2Skew \
+    --agg mean \
+    --temperature 1.0 \
+    --out-dir results/logos_ic \
+    --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \ 
+    --cell-type JurkatStim
+
+  python code/5_logos_other.py --mode ic \
+    --in-dir results/satmut_stats \
+    --pattern 'HEK293_activity_satmut_effects_stats.tsv' \
+    --metric post_log2Skew \
+    --agg mean \
+    --temperature 1.0 \
+    --out-dir results/logos_ic \
+    --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \
+    --cell-type HEK293
