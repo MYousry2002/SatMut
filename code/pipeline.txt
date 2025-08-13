@@ -1,18 +1,21 @@
 # step1: filter data
 
-python code/0_filter_data.python
+cd code
+python 0_filter_data.py
 
 
 # step2: include mutation and sequence information
 
-python code/1_infer_mutation.py
+python 1_infer_mutation.py
 
 
 # step3: calculate delta activity
-python code/2_delta_activity.py
+python 2_delta_activity.py
 
 
 # step3: calculate stats
+
+python3 3_satmut_stats.py
 
 # step4: logos in two modes: effect and information
 
@@ -55,6 +58,34 @@ python code/4_logos_lolipop.py \
   --out-dir results/logos_lolipop \
   --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \
   --cell-type HEK293 \
+  --lollipop_alpha 0.18 \
+  --stem_width 0.6 \
+  --lollipop_jitter 0.0
+
+
+python code/4_logos_lolipop.py \
+  --in-dir results/satmut_stats \
+  --pattern 'Jurkat_tnf_activity_satmut_effects_stats.tsv' \
+  --metric post_log2Skew \
+  --agg mean \
+  --y-symmetric \
+  --out-dir results/logos_lolipop \
+  --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \
+  --cell-type Jurkat_tnf \
+  --lollipop_alpha 0.18 \
+  --stem_width 0.6 \
+  --lollipop_jitter 0.0
+
+
+python code/4_logos_lolipop.py \
+  --in-dir results/satmut_stats \
+  --pattern 'Jurkat_infg_activity_satmut_effects_stats.tsv' \
+  --metric post_log2Skew \
+  --agg mean \
+  --y-symmetric \
+  --out-dir results/logos_lolipop \
+  --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \
+  --cell-type Jurkat_infg \
   --lollipop_alpha 0.18 \
   --stem_width 0.6 \
   --lollipop_jitter 0.0
