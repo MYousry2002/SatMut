@@ -27,9 +27,21 @@ Typical usage:
         --ref-metric ref_activity \\
         --agg mean \\
         --y-symmetric \\
-        --out-dir results/logos_lolipop \\
+        --out-dir results/logos_lolipop_jurkat \\
         --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \\
         --cell-type Jurkat
+    
+    python code/4_logos_lolipop.py \
+        --in-dir results/satmut_stats \
+        --pattern 'OL53_T_primaryT_activity_meta_virus_satmut_with_mut__unknown_satmut_effects_stats.tsv' \
+        --metric post_log2Skew \
+        --ref-metric ref_activity \
+        --agg mean \
+        --y-symmetric \
+        --out-dir results/logos_lolipop_T \
+        --bp-per-inch 8 --min-width 12 --height 4 --font-size 10 \
+        --cell-type Tcell
+
 
 """
 
